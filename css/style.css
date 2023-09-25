@@ -4,3 +4,7 @@
 /* Import des Components */
 @import "components/header.css";
 @import "components/footer.css";
+@import "components/form.css";
+
+/* Import des pages */
+@import "pages/inscription.css";
