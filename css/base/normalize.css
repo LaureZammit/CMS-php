@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+
+    font-family: 'Cambria', 'Times New Roman', serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}

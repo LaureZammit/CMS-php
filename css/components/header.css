@@ -1,0 +1,31 @@
+header {
+    max-width: 1440px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav {
+    align-self: center;
+}
+
+header nav ul {
+    padding: 0;
+
+    display: flex;
+    gap: 20px;
+}
+
+header li {
+    list-style: none;
+}
+
+.header-logo {
+    width: 250px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    color: blue;
+}

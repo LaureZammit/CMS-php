@@ -1,0 +1,6 @@
+/* Fichiers de base */
+@import "base/normalize.css";
+
+/* Import des Components */
+@import "components/header.css";
+@import "components/footer.css";
