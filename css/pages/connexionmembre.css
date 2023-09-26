@@ -1,0 +1,22 @@
+.connexion-membre {
+    margin: auto;
+    max-width: 1440px;
+
+    text-align: center;
+}
+
+.connexion-membre form {
+    margin-top: 50px;
+    width: 50%;
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: 30% auto;
+    gap: 20px;
+}
+
+.submit-connexion  {
+    grid-column: 1 / 3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
