@@ -60,6 +60,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
                         // On connecte l'utilisateur avec les sessions
                         $_SESSION['id'] = $result['id'];
                         $_SESSION['token'] = $token;
+                        $_SESSION['compte'] = $result['compte'];
     
                         header('Location: dashboard.php');
                     }
