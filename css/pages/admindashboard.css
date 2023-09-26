@@ -1,0 +1,70 @@
+.admin-body-dashboard, 
+.admin-body-dashboard h1, 
+.admin-body-dashboard h2, 
+.admin-body-dashboard h3, 
+.admin-body-dashboard p {
+    margin: 0;
+    padding: 0;
+}
+
+.admin-body-dashboard {
+    font-family: 'Cambria', 'Times New Roman', serif;
+    background-color: #f0f0f0;
+}
+
+.container-admin-dashboard {
+    max-width: 1440px;
+    margin: auto;
+    padding: 20px;
+}
+
+.admin-dashboard-section {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.admin-dashboard-section h1 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard-item {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(33.33% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-item:hover {
+    background-color: #f0f0f0;
+}
+
+.dashboard-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.dashboard-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-item p {
+    font-size: 16px;
+    color: #333;
+}

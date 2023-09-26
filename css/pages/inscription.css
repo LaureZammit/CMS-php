@@ -1,20 +1,52 @@
 .inscription-section {
     margin: auto;
-    max-width: 1440px;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .inscription-form {
-    margin: 50px auto;
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: left;
+}
 
-    max-width: 70%;
-    justify-content: center;
+.inscription-form label {
+    font-weight: bold;
+}
+
+.inscription-form input[type="text"],
+.inscription-form input[type="email"],
+.inscription-form input[type="password"],
+.inscription-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.inscription-form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inscription-form input[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
 .errorMessage {
-    text-align: center;
     color: red;
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: 16px;
+    margin-top: 10px;
 }

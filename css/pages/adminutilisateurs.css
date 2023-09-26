@@ -1,0 +1,67 @@
+.admin-user-body {
+    background-color: #f2f2f2;
+}
+
+.admin-user-main {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-user-main h1 {
+    font-size: 24px;
+    color: #007bff;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+.admin-user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-user-table th, .admin-user-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.admin-user-table th {
+    background-color: #f2f2f2;
+}
+
+.admin-user-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+a.button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+}
+
+a.modify-button, a.delete-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+a.modify-button:hover, a.delete-button:hover {
+    background-color: #0056b3;
+}

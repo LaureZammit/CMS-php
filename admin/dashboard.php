@@ -52,28 +52,28 @@ $result = $requete->fetch();
     <link rel="stylesheet" href="../css/style.css">
     <title>Dashboard</title>
 </head>
-<body>
+<body class="admin-body-dashboard">
     <?php 
         include_once '../components/headerAdmin.php';
     ?>
-    <main>
-        <section>
+    <main class="container-admin-dashboard">
+        <section class="admin-dashboard-section">
             <h1>Bienvenue <?=$result['prenom_user']?></h1>
             <h2>Que souhaitez-vous faire ?</h2>
 
             <div class="dashboard-container">
                 <div class="dashboard-item">
-                    <h3><a href="listepages.php">Créer une nouvelle page</a></h3>
-                    <p>Vous pouvez créer une nouvelle page.</p>
+                    <h3><a href="listepages.php">Liste des pages</a></h3>
+                    <p>Vous pouvez créer, modifier, supprimer des pages.</p>
                 </div>
 
                 <div class="dashboard-item">
-                    <h3><a href="listearticles.php">Gérer les articles</a></h3>
-                    <p>Vous pouvez créer un nouvel article.</p>
+                    <h3><a href="listearticles.php">Liste des articles</a></h3>
+                    <p>Vous pouvez créer, modifier, supprimer des articles.</p>
                 </div>
-                
+
                 <div class="dashboard-item">
-                    <h3><a href="listeutilisateurs.php">Gérer les comptes utilisateurs</a></h3>
+                    <h3><a href="listeutilisateurs.php">Liste des comptes utilisateurs</a></h3>
                     <p>Vous pouvez gérer les comptes utilisateurs.</p>
                 </div>
         </section>

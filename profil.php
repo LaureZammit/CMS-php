@@ -50,7 +50,7 @@ if($session) {
 
         if($result) {
             // Si on arrive ici : l'utilisateur est connecté
-            $errorMessage = "Bienvenue " . $prenom . " " . $nom . "<br/>";
+            $messageBienvenue = "Bienvenue " . $prenom . " " . $nom . "<br/>";
         }
 
         if(!$result) {
@@ -78,21 +78,22 @@ if($session) {
     ?>
 
     <main>
-        <section>
-            <h1><?=$errorMessage?></h1>
+        <section class="profile-section">
+            <h1 class="message-bienvenue"><?=$messageBienvenue?></h1>
     
             <p>Votre profil</p>
-            <ul>
-                <li>Prénom : <?=$prenom?></li>
-                <li>Nom : <?=$nom?></li>
-                <li>Email : <?=$email?></li>
-                <li>Pseudo : <?=$pseudo?></li>
-                <li>Compte : <?=$compte?></li>
-                <li>Avatar : <?=$avatar?></li>
-            </ul>
-            <input type="submit" name="updateavatar" value="Modifier ma photo de profil">
-            <input type="submit" name="update" value="Modifier mes renseignements">
-            <input type="submit" name="delete" value="Supprimer mon compte">
+            <div class="profile-info">
+                <ul>
+                    <li>Prénom : <?=$prenom?></li>
+                    <li>Nom : <?=$nom?></li>
+                    <li>Email : <?=$email?></li>
+                    <li>Pseudo : <?=$pseudo?></li>
+                    <li>Compte : <?=$compte?></li>
+                    <li>Avatar : <?=$avatar?></li>
+                </ul>
+            </div>
+            <input class="profile-buttons" type="submit" name="updateavatar" value="Modifier ma photo de profil">
+            <input class="profile-buttons" type="submit" name="update" value="Modifier mes renseignements">
         </section>
     </main>
 </body>

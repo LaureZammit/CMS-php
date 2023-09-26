@@ -1,4 +1,4 @@
-.connexion-membre {
+.connexion-admin {
     margin: auto;
     max-width: 800px;
     padding: 20px;
@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-.connexion-membre form {
+.connexion-admin form {
     margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr;
@@ -17,19 +17,19 @@
     text-align: left;
 }
 
-.connexion-membre label {
+.connexion-admin label {
     font-weight: bold;
 }
 
-.connexion-membre input[type="email"],
-.connexion-membre input[type="password"] {
+.connexion-admin input[type="email"],
+.connexion-admin input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.connexion-membre .submit-connexion {
+.connexion-admin .submit-connexion {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
@@ -39,11 +39,11 @@
     transition: background-color 0.3s ease;
 }
 
-.connexion-membre .submit-connexion:hover {
+.connexion-admin .submit-connexion:hover {
     background-color: #0056b3;
 }
 
-.errorMessage-connexion {
+.errorMessage-connexion-admin {
     color: red;
     font-size: 16px;
     margin-top: 10px;

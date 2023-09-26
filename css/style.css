@@ -3,6 +3,7 @@
 
 /* Import des Components */
 @import "components/header.css";
+@import "components/headeradmin.css";
 @import "components/footer.css";
 @import "components/form.css";
 
@@ -10,3 +11,9 @@
 @import "pages/index.css";
 @import "pages/inscription.css";
 @import "pages/connexionmembre.css";
+@import "pages/contact.css";
+@import 'pages/profil.css';
+
+@import "pages/admindashboard.css";
+@import "pages/adminconnexion.css";
+@import "pages/adminutilisateurs.css";

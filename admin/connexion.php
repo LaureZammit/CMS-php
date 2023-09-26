@@ -95,7 +95,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
                 <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
                 <input class="submit-connexion" name="submit" type="submit" value="Se connecter">
             </form>
-            <p class="errorMessage"><?= $errorMessage?></p>
+            <p class="errorMessage-connexion-admin"><?= $errorMessage?></p>
         </section>
     </main>
 </body>
