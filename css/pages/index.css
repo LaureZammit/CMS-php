@@ -1,0 +1,8 @@
+.section-accueil-index {
+    margin: auto;
+    max-width: 1440px;
+}
+
+.section-accueil-index h1, .section-accueil-index h2 {
+    margin-left: 20px;
+}

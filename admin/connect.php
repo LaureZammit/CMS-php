@@ -2,6 +2,13 @@
 // ID : wordpress
 // MDP : wordpress123
 
+// loly123 admin
+// toto123 membre
+// antho123 modérateur
+// abel123
+// kloe123
+// jle123
+
 // Manipulation de base de données avec PDO
 
 // Connexion à la base de données

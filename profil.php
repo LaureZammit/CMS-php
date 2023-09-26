@@ -14,7 +14,6 @@ $avatar = null;
 $compte = null;
 
 if($session) {
-
     $token = $session;
     $isTokenCorrect = password_verify("Super connexion", $token);
 
@@ -59,6 +58,8 @@ if($session) {
             header('Location: connexion.php');
         }
     }
+} else {
+    header('Location: connexion.php');
 }
 ?>
 

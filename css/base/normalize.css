@@ -12,6 +12,12 @@ a {
 h1 {
     font-size: 20px;
     color: #81adf0;
+    margin: 30px auto;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 10px auto;
 }
 
 p, input {

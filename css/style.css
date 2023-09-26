@@ -7,5 +7,6 @@
 @import "components/form.css";
 
 /* Import des pages */
+@import "pages/index.css";
 @import "pages/inscription.css";
 @import "pages/connexionmembre.css";

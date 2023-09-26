@@ -4,14 +4,6 @@ session_start();
 $errorMessage = "";
 $isEverythingOk = true;
 
-// loly123 admin
-// toto123 membre
-// antho123 modérateur
-// abel123
-// kloe123
-// jle123
-
-
 // Si le formulaire a été envoyé
 if(isset($_POST['submit'])) {
     // On récupère les données
