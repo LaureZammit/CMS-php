@@ -1,0 +1,20 @@
+.inscription-section {
+    margin: auto;
+    max-width: 1440px;
+}
+
+.inscription-form {
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 30% auto;
+
+    max-width: 70%;
+    justify-content: center;
+}
+
+.errorMessage {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    margin-top: 5px;
+}

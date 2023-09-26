@@ -1,7 +1,9 @@
 <?php 
 session_start();
 
-// 
+// Pas d'erreur
+$errorMessage = '';
+
 ?>
 
 <!DOCTYPE html>
