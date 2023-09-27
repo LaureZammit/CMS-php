@@ -62,7 +62,7 @@ Vous allez développer un système d’administration. Vous pouvez voir ce proje
         * [x] Mail
         * [x] Pseudo
         * [x] Mot de passe
-        * [ ] Avatar
+        * [x] Avatar
         * [ ] Niveau de compte
             * [ ] Administrateur
                 * [ ] Tous les droits
