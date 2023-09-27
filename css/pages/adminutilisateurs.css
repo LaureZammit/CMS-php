@@ -37,31 +37,3 @@
 .admin-user-table tr:nth-child(even) {
     background-color: #f7f7f7;
 }
-
-a.button {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 5px;
-}
-
-a.button:hover {
-    background-color: #0056b3;
-}
-
-a.modify-button, a.delete-button {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 5px;
-}
-
-a.modify-button:hover, a.delete-button:hover {
-    background-color: #0056b3;
-}

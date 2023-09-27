@@ -57,11 +57,11 @@ Vous allez développer un système d’administration. Vous pouvez voir ce proje
     * [ ] Suppression de catégories d'article
 
     * [ ] Création de comptes
-        * [ ] Nom
-        * [ ] Prénom
-        * [ ] Mail
-        * [ ] Pseudo
-        * [ ] Mot de passe
+        * [x] Nom
+        * [x] Prénom
+        * [x] Mail
+        * [x] Pseudo
+        * [x] Mot de passe
         * [ ] Avatar
         * [ ] Niveau de compte
             * [ ] Administrateur
@@ -110,19 +110,21 @@ Project Link: [https://github.com/LaureZammit/CMS-php.git](https://github.com/La
 
 ## Remerciements
 
+* [Jean-Louis ERRANTE](https://www.errantecreation.com/) : formateur
+
 * [PurpleBooth](https://github.com/PurpleBooth/a-good-readme-template) : modèle de Readme très complet
 * [Othneildrew](https://github.com/othneildrew/Best-README-Template/blob/master/README.md) - Readme Template
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/LaureZammit/Booki-php.svg?style=for-the-badge
-[contributors-url]: https://github.com/LaureZammit/Booki-php/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/LaureZammit/Booki-php.svg?style=for-the-badge
-[forks-url]: https://github.com/LaureZammit/Booki-php/forks
-[stars-shield]: https://img.shields.io/github/stars/LaureZammit/Booki-php.svg?style=for-the-badge
-[stars-url]: https://github.com/LaureZammit/Booki-php/stargazers
-[issues-shield]: https://img.shields.io/github/issues/LaureZammit/Booki-php.svg?style=for-the-badge
-[issues-url]: https://github.com/LaureZammit/Booki-php/issues
+[contributors-shield]: https://img.shields.io/github/contributors/LaureZammit/CMS-php.svg?style=for-the-badge
+[contributors-url]: https://github.com/LaureZammit/CMS-php/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LaureZammit/CMS-php.svg?style=for-the-badge
+[forks-url]: https://github.com/LaureZammit/CMS-php/forks
+[stars-shield]: https://img.shields.io/github/stars/LaureZammit/CMS-php.svg?style=for-the-badge
+[stars-url]: https://github.com/LaureZammit/CMS-php/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LaureZammit/CMS-php.svg?style=for-the-badge
+[issues-url]: https://github.com/LaureZammit/CMS-php/issues
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/laure-zammit-84a3b3150/

@@ -89,24 +89,6 @@ $result = $requete->fetch();
                             echo '<td><a href="supprimerutilisateur.php?id='.$user['id_user'].'">Supprimer</a></td>';
                         echo '</tr>';
                     }
-
-
-
-
-                    // On boucle sur la variable result
-                    // foreach($result as $user) {
-                    //     // On affiche les données de chaque utilisateur
-                    //     echo '<tr>';
-                    //         echo '<td>'.$user['nom_user'].'</td>';
-                    //         echo '<td>'.$user['prenom_user'].'</td>';
-                    //         echo '<td>'.$user['pseudo_user'].'</td>';
-                    //         echo '<td>'.$user['mail_user'].'</td>';
-                    //         echo '<td>'.$user['avatar_user'].'</td>';
-                    //         echo '<td>'.$user['compte_user'].'</td>';
-                    //         echo '<td><a class="modify-button" href="modifierutilisateur.php?id='.$user['id_user'].'">Modifier</a></td>';
-                    //         echo '<td><a class="delete-button" href="supprimerutilisateur.php?id='.$user['id_user'].'">Supprimer</a></td>';
-                    //     echo '</tr>';
-                    // }
                 ?>
                 </tbody>
             </table>
