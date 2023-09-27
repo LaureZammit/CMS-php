@@ -20,7 +20,6 @@
 session_start();
 
 // La page ne s'affiche que si la connexion provient d'un compte_user == admin
-
 $token = password_verify("Super connexion", $_SESSION['token']);
 if(!isset($_SESSION['id']) || !$token) {
     header('Location: ../connexion.php');
@@ -78,6 +77,15 @@ $result = $requete->fetch();
                 </div>
         </section>
 
+        <section class="admin-dashboard-section">
+            <h2>Outils</h2>
+
+            <div class="dashboard-container">
+                <div class="dashboard-item">
+                    <h3><a href="createarticles.php">Créer un nouvel article</a></h3>
+                    <p>Vous pouvez créer des articles.</p>
+                </div>
+        </section>
     </main>
 </body>
 </html>

@@ -1,6 +1,7 @@
 * {
     margin: 0;
-
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Cambria', 'Times New Roman', serif;
 }
 
@@ -10,14 +11,15 @@ a {
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 24px;
     color: #81adf0;
     margin: 30px auto;
     text-transform: uppercase;
+    text-align: center;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin: 10px auto;
 }
 

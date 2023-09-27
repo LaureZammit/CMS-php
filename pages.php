@@ -1,3 +1,4 @@
+<!-- Rassemble les articles par catégorie -->
 <?php 
 session_start();
 ?>
