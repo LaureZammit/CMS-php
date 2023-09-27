@@ -37,3 +37,104 @@
 .admin-user-table tr:nth-child(even) {
     background-color: #f7f7f7;
 }
+
+.button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.modify-button, .delete-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.modify-button:hover, .delete-button:hover {
+    background-color: #0056b3;
+}
+
+/* Champs select INSCRIPTION */
+
+.compteselect {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+}
+
+.compteselect option {
+    background-color: #fff; 
+    color: #000; 
+}
+
+.compteselect:hover {
+    border-color: #007bff;
+}
+
+.compteselect:focus {
+    outline: none; /* Supprime la bordure de focus par défaut */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7); 
+}
+
+
+/* Partie hidden */
+.edit-row {
+    display: none; 
+    background-color: #f2f2f2; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    margin-top: 10px; 
+    padding: 10px;
+}
+
+.edit-form {
+    margin-top: 10px;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="file"],
+.edit-form select {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    margin-top: 10px;
+}
+
+.edit-form input[type="submit"],
+.edit-form .cancel-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-form input[type="submit"]:hover,
+.edit-form .cancel-button:hover {
+    background-color: #0056b3;
+}
+
+.admin-img-profil {
+    width: 100px;
+}

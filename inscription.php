@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
     $email = $_POST['email'];
     $pseudo = $_POST['pseudo'];
     $password = $_POST['password'];
-    $avatar = $_POST['avatar'];
+    $avatarFileName = $_FILES['avatar'];
 
     // Si le mail n'est pas un mail valide
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -30,6 +30,24 @@ if(isset($_POST['submit'])) {
     if($isEverythingOk) {
         // On fait appel à la BDD
         require_once ('admin/connect.php');
+
+        /// Gestion de l'avatar
+        $avatarFileName = ''; // Initialisez la variable pour stocker le nom du fichier avatar
+
+        if(isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+            $avatarFileName = $_FILES['avatar']['name'];
+            $avatarTmpName = $_FILES['avatar']['tmp_name'];
+            $avatarPath = 'uploads/' . $avatarFileName; // Spécifiez le chemin où vous souhaitez stocker l'avatar
+
+            // Déplacez le fichier téléchargé vers le dossier d'uploads
+            if(move_uploaded_file($avatarTmpName, $avatarPath)) {
+                // Le fichier a été téléchargé avec succès
+            } else {
+                // Une erreur s'est produite lors du téléchargement du fichier
+                $errorMessage .= "Une erreur s'est produite lors du téléchargement de l'avatar.<br />";
+                $isEverythingOk = false;
+            }
+        }
 
         // Si le pseudo est déjà enregistré en base de données
         // Récupérer les pseudo de la base de données, pour les comparer au mot de passe entré sans prendre en compte la casse
@@ -72,13 +90,13 @@ if(isset($_POST['submit'])) {
             $requeteInscription = $db->prepare($requeteInscription);
 
             $requeteInscription->execute(array(
-                ':nom' => $nom,
-                ':prenom' => $prenom,
-                ':mail' => $email,
-                ':pseudo' => $pseudo,
-                ':pass' => $hash,
-                ':avatar' => $avatar,
-                ':compte' => $compte
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'mail' => $email,
+                'pseudo' => $pseudo,
+                'pass' => $hash,
+                'avatar' => $avatarFileName,
+                'compte' => $compte
             ));
 
             // On redirige vers la page de connexion
@@ -105,7 +123,7 @@ if(isset($_POST['submit'])) {
     <main>
         <section class="inscription-section">
             <h1>Page d'inscription</h1>
-            <form class="inscription-form" action="#" method="post">
+            <form class="inscription-form" enctype="multipart/form-data" action="#" method="post">
                 <!-- Nom, Prénom, mail, pseudo, mot de passe, avatar -->
                 <label for="nom">Nom</label>
                 <input type="text" name="nom" id="nom" placeholder="Votre nom" required>

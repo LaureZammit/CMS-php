@@ -24,13 +24,13 @@ $session = isset($_SESSION["token"]) ? $_SESSION["token"] : false;
                     echo '<div class="dropdown">';
                         echo '<button class="dropbtn admin-links a">Listes</button>';
                         echo '<div class="dropdown-content">';
-                            echo '<li><a href="listepages.php">Liste des pages</a></li>';
-                            echo '<li><a href="listearticles.php">Liste des articles</a></li>';
-                            echo '<li><a href="listeutilisateurs.php">Liste des utilisateurs</a></li>';
+                            echo '<li><a href="admin/listepages.php">Liste des pages</a></li>';
+                            echo '<li><a href="admin/listearticles.php">Liste des articles</a></li>';
+                            echo '<li><a href="admin/listeutilisateurs.php">Liste des utilisateurs</a></li>';
                         echo '</div>';
                     echo '</div>';
-                    echo '<li><a class="nav-link" href="dashboard.php">Dashboard</a></li>';
-                    echo '<li><a class="nav-link" href="deconnexion.php">Déconnexion</a></li>';
+                    echo '<li><a class="nav-link" href="admin/dashboard.php">Dashboard</a></li>';
+                    echo '<li><a class="nav-link" href="admin/deconnexion.php">Déconnexion</a></li>';
 
                 } else { // Si connecté : profil et deconnexion
                     echo '<li><a href="./profil.php">Profil</a></li>';

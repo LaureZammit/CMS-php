@@ -11,7 +11,7 @@ $email = null;
 $pseudo = null;
 $password = null;
 $avatar = null;
-$compte = null;
+$compteprofile = null;
 
 if($session) {
     $token = $session;
@@ -34,7 +34,7 @@ if($session) {
 
         // On injecte les valeurs
         $requete->execute(array(
-            ':id' => $_SESSION['id']
+            'id' => $_SESSION['id']
         ));
 
         $result = $requete->fetch();
@@ -45,8 +45,8 @@ if($session) {
         $email = $result['mail_user'];
         $pseudo = $result['pseudo_user'];
         $password = $result['password_user'];
+        $compteprofile = $result['compte_user'];
         $avatar = $result['avatar_user'];
-        $compte = $result['compte_user'];
 
         if($result) {
             // Si on arrive ici : l'utilisateur est connecté
@@ -56,6 +56,39 @@ if($session) {
         if(!$result) {
             // Si on arrive ici : l'utilisateur n'est pas connecté
             header('Location: connexion.php');
+        }
+
+        if (isset($_FILES['new_avatar']) && $_FILES['new_avatar']['error'] === UPLOAD_ERR_OK) {
+            // Spécifiez le chemin où vous souhaitez stocker l'avatar téléchargé
+            $uploadDirectory = 'uploads/';
+
+            // Obtenez le nom du fichier téléchargé
+            $avatarFileName  = $_FILES['new_avatar']['name'];
+
+            // Déplacez le fichier téléchargé vers le dossier d'uploads
+            $avatarPath = $uploadDirectory . $avatarFileName ;
+
+            if (move_uploaded_file($_FILES['new_avatar']['tmp_name'], $avatarPath)) {
+                try {
+                    $requete = "UPDATE users SET avatar_user = :avatar WHERE id_user = :id";
+    
+                    // On prépare la requête
+                    $requete = $db->prepare($requete);
+    
+                    // On injecte les valeurs
+                    $requete->execute(array(
+                        ':avatar' => $avatarFileName,
+                        ':id' => $_SESSION['id']
+                    ));
+    
+                    header('Location: profil.php');
+                    exit;
+                } catch (PDOException $e) {
+                    echo "Erreur : " . $e->getMessage();
+                }
+            } else {
+                echo "Une erreur s'est produite lors du téléchargement de l'avatar.";
+            }
         }
     }
 } else {
@@ -81,20 +114,46 @@ if($session) {
         <section class="profile-section">
             <h1 class="message-bienvenue"><?=$messageBienvenue?></h1>
     
-            <p>Votre profil</p>
+            <h2>Votre profil</h2>
+
+            <button id="showAvatarForm">Modifier ma photo de profil</button>
+            <div id="avatarFormContainer" style="display: none;">
+                <form class="profile-form" enctype="multipart/form-data" action="profil.php" method="post">
+                    <label for="new_avatar">Nouvel avatar :</label>
+                    <input type="file" name="new_avatar" id="new_avatar">
+                    <input class="profile-buttons" type="submit" name="update_avatar" value="Modifier ma photo de profil">
+                </form>
+            </div>
+
             <div class="profile-info">
                 <ul>
                     <li>Prénom : <?=$prenom?></li>
                     <li>Nom : <?=$nom?></li>
                     <li>Email : <?=$email?></li>
                     <li>Pseudo : <?=$pseudo?></li>
-                    <li>Compte : <?=$compte?></li>
-                    <li>Avatar : <?=$avatar?></li>
+                    <li>Compte : <?=$compteprofile?></li>
+                    <li>Avatar : </li>
+                    <li><img src="uploads/<?=$avatar?>" alt="Photo de profile"></li>
                 </ul>
             </div>
-            <input class="profile-buttons" type="submit" name="updateavatar" value="Modifier ma photo de profil">
             <input class="profile-buttons" type="submit" name="update" value="Modifier mes renseignements">
+            <input class="profile-buttons" type="submit" name="deleteprofile" value="Supprimer mon compte">
         </section>
     </main>
 </body>
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const showAvatarFormButton = document.getElementById('showAvatarForm');
+    const avatarFormContainer = document.getElementById('avatarFormContainer');
+
+    showAvatarFormButton.addEventListener('click', function() {
+        if (avatarFormContainer.style.display === 'none' || avatarFormContainer.style.display === '') {
+            avatarFormContainer.style.display = 'block';
+        } else {
+            avatarFormContainer.style.display = 'none';
+        }
+    });
+});
+</script>

@@ -70,8 +70,8 @@ Vous allez développer un système d’administration. Vous pouvez voir ce proje
                 * [ ] Gestion des articles et des pages
             * [ ] Membre
                 * [ ] Gestion de son compte (ajout d'avatar, modification MDP)
-    * [ ] Modification de comptes
-    * [ ] Suppression de comptes
+    * [x] Modification de comptes
+    * [x] Suppression de comptes
 
 * [ ] Côté utilisateur
     * [x] Affichage de la page d'accueil
