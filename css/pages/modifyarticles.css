@@ -1,0 +1,92 @@
+.modify-article-container h2 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.modify-article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.modify-article-container form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modify-article-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modify-article-container input[type="text"],
+.modify-article-container input[type="date"],
+.modify-article-container select,
+.modify-article-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modify-article-container input[type="file"] {
+    padding: 5px;
+}
+
+.modify-article-container img.modify-img-article {
+    max-width: 100%; 
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modify-article-container input[type="submit"] {
+    background-color: #81adf0;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.modify-article-container input[type="submit"]:hover {
+    background-color: #5e8bc7;
+}
+
+.modify-article-container p.error-message {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .modify-article-container {
+        padding: 10px;
+    }
+
+    .modify-article-container h1 {
+        font-size: 24px;
+    }
+
+    .modify-article-container form {
+        padding: 10px;
+    }
+
+    .modify-article-container input[type="submit"] {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

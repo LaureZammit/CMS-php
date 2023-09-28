@@ -3,19 +3,19 @@
     Cette page ne doit s'afficher que si l'admin est connecté
 
     Cette page doit permettre : 
-        - De créer une nouvelle page
-        - De créer un nouvel article
-        - De gérer les comptes utilisateurs
+        [ ] De créer une nouvelle page
+        [x] De créer un nouvel article
+        [x] De gérer les comptes utilisateurs
 
     Sur cette page vous devez également afficher :
-        - Les derniers articles (les 5 derniers)
-        - Les dernières pages (les 5 dernières)
-        - Les derniers utilisateurs (les 5 derniers)
+        [ ] Les derniers articles (les 5 derniers)
+        [ ] Les dernières pages (les 5 dernières)
+        [ ] Les derniers utilisateurs (les 5 derniers)
 
     Vous devez avoir la possibilité de :
-        - Afficher la liste complète des articles (c'est une page à part entière)
-        - Afficher la liste complète des pages (c'est une page à part entière)
-        - Afficher la liste complète des utilisateurs (c'est une page à part entière)
+        [x] Afficher la liste complète des articles (c'est une page à part entière)
+        [ ] Afficher la liste complète des pages (c'est une page à part entière)
+        [x] Afficher la liste complète des utilisateurs (c'est une page à part entière)
 */
 session_start();
 
@@ -40,6 +40,11 @@ $requete->execute(array(
 ));
 
 $result = $requete->fetch();
+
+// Si la connexion provient d'un compte_user == admin on reste sur la page, sinon on est redirigé vers la page d'accueil
+if($result['compte_user'] !== 'admin') {
+    header('Location: ../index.php');
+} else {
 
 ?>
 
@@ -82,10 +87,85 @@ $result = $requete->fetch();
 
             <div class="dashboard-container">
                 <div class="dashboard-item">
+                    <h3><a href="createpages.php">Créer une nouvelle page</a></h3>
+                    <p>Vous pouvez créer des pages.</p>
+                </div>
+                <div class="dashboard-item">
                     <h3><a href="createarticles.php">Créer un nouvel article</a></h3>
                     <p>Vous pouvez créer des articles.</p>
                 </div>
+                <div class="dashboard-item">
+                    
+                </div>
         </section>
+
+            <!-- Afficher les 5 derniers articles dans une colonne -->
+            <!-- Afficher les 5 deernières pages dans une colonne -->
+            <!-- Afficher les 5 derniers utilisateurs dans une colonne -->
+        <section class="admin-dashboard-section">
+            <h2>Les Derniers éléments</h2>
+
+            <div class="dashboard-container">
+                <div class="dashboard-item">
+                    <h3>Derniers Articles</h3>
+                    <ul>
+                        <?php
+                        // Requête pour récupérer les 5 derniers articles
+                        // Requête pour récupérer les 5 derniers articles
+                        $requeteDerniersArticles = "SELECT * FROM articles ORDER BY date_article DESC LIMIT 5";
+                        $stmtDerniersArticles = $db->prepare($requeteDerniersArticles);
+                        $stmtDerniersArticles->execute();
+
+                        while ($article = $stmtDerniersArticles->fetch()) {
+                            echo "<li>" . $article['titre_article'] . "</li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+                <div class="dashboard-item">
+                    <h3>Dernières Pages</h3>
+                    <ul>
+                        <?php
+                        // Requête pour récupérer les 5 dernières pages
+                        $requeteDernieresPages = "SELECT * FROM pages ORDER BY date_page DESC LIMIT 5";
+                        $stmtDernieresPages = $db->prepare($requeteDernieresPages);
+                        $stmtDernieresPages->execute();
+
+                        while ($page = $stmtDernieresPages->fetch()) {
+                            echo "<li>" . $page['titre_page'] . "</li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+                <div class="dashboard-item">
+                    <h3>Derniers Utilisateurs</h3>
+                    <ul>
+                        <?php
+                        // Requête pour récupérer les 5 derniers utilisateurs
+                        // Requête pour récupérer les 5 derniers utilisateurs
+                        $requeteDerniersUtilisateurs = "SELECT * FROM users ORDER BY id_user DESC LIMIT 5";
+                        $stmtDerniersUtilisateurs = $db->prepare($requeteDerniersUtilisateurs);
+                        $stmtDerniersUtilisateurs->execute();
+
+                        while ($utilisateur = $stmtDerniersUtilisateurs->fetch()) {
+                            echo "<li>" . $utilisateur['prenom_user'] . " " . $utilisateur['nom_user'] . "</li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <?php 
+        include_once '../components/footer.php';
+    ?>
 </body>
 </html>
+
+<?php 
+}
+?>

@@ -18,5 +18,7 @@
 @import "pages/adminconnexion.css";
 @import "pages/adminutilisateurs.css";
 
-/* Création des articles */
+/* Gestion des articles */
 @import "pages/createarticles.css";
+@import "pages/listearticles.css";
+@import "pages/modifyarticles.css";

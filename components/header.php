@@ -1,5 +1,6 @@
 <?php 
-$session = isset($_SESSION["token"]) ? $_SESSION["token"] : false;
+@session_start();
+
 ?>
 
 
@@ -14,13 +15,42 @@ $session = isset($_SESSION["token"]) ? $_SESSION["token"] : false;
             <li><a href="./contact.php">Contact</a></li>
             <?php
                 $compte = isset($_SESSION['compte']) ? $_SESSION['compte'] : null;
+
                 // Si non connecté : Inscription et connexion
-                if (!isset($_SESSION['id'])) {
-                    echo '<li><a href="./inscription.php">Inscription</a></li>';
-                    echo '<li><a href="./connexion.php">Connexion</a></li>';
-                    echo '<li><a href="./admin/connexion.php">Admin</a></li>';
-                    
-                } else if ($compte  == 'admin') {
+                if (!isset($_SESSION['id'])) { ?>
+                    <li><a href="./inscription.php">Inscription</a></li>
+                    <li><a href="./connexion.php">Connexion</a></li>
+                    <li><a href="./admin/connexion.php">Admin</a></li>
+                <?php } ?>
+
+                <?php 
+                if ($compte  === 'admin' && $compte !== "modérateur") { // Si connecté : profil et deconnexion  ?>
+                    <div class="dropdown">
+                        <button class="dropbtn admin-links a">Listes</button>
+                        <div class="dropdown-content">
+                            <li><a href="admin/listepages.php">Liste des pages</a></li>
+                            <li><a href="admin/listearticles.php">Liste des articles</a></li>
+                            <li><a href="admin/listeutilisateurs.php">Liste des utilisateurs</a></li>
+                        </div>
+                    </div>
+                    <li><a class="nav-link" href="admin/dashboard.php">Dashboard</a></li>
+                    <li><a class="nav-link" href="admin/deconnexion.php">Déconnexion</a></li>
+                <?php } ?>
+                
+                <?php 
+                if ($compte === "modérateur") {  ?>
+                    <div class="dropdown">
+                        <button class="dropbtn admin-links a">Listes</button>
+                        <div class="dropdown-content">
+                            <li><a href="admin/listepages.php">Liste des pages</a></li>
+                            <li><a href="admin/listearticles.php">Liste des articles</a></li>
+                        </div>
+                    </div>
+                    <li><a class="nav-link" href="admin/deconnexion.php">Déconnexion</a></li>
+                <?php } 
+
+                //} 
+                else if ($compte  == 'admin') {
                     echo '<div class="dropdown">';
                         echo '<button class="dropbtn admin-links a">Listes</button>';
                         echo '<div class="dropdown-content">';

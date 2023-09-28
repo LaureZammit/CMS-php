@@ -1,0 +1,128 @@
+.body-liste-article {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.main-liste-article {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-liste-article h1 {
+    font-size: 24px;
+    color: #007bff;
+    margin: 10px 0;
+    text-transform: uppercase;
+} 
+
+.filter-form {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter-form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filter-form select {
+    width: 100%;
+    padding: 5px;
+}
+
+
+/* Styles pour chaque article */
+
+.article-list {
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+.article {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+}
+
+.article h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.article p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.bolder {
+    font-weight: 700;
+}
+
+/* Style pour la date de publication */
+.article .date-article {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Styles pour la catégorie et le statut */
+.article .category-label,
+.article .status-label {
+    font-weight: bold;
+    color: #444;
+}
+
+.article .category,
+.article .status {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Styles pour le bouton Filtrer */
+.filter-form input[type="submit"],
+.article input[type="submit"] 
+{
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.filter-form input[type="submit"]:hover,
+.article input[type="submit"]:hover 
+{
+    background-color: #0056b3;
+}
+
+.article a {
+    text-decoration: none;
+}
+
+.article a:hover {
+    text-decoration: none; 
+}
+
+.div-form-modify-delete {
+    display: flex;
+    justify-content: space-around;
+}

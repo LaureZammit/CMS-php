@@ -21,159 +21,163 @@ $requete->execute(array(
 ));
 
 $result = $requete->fetch();
-
-// Fonction de MODIFICATION de compte
-if (isset($_POST['submitupdate'])) {
-    // Le formulaire de modification a été soumis
-    // Récupérez les données soumises
-    $newNom = $_POST['new_nom'];
-    $newPrenom = $_POST['new_prenom'];
-    $newPseudo = $_POST['new_pseudo'];
-    $newEmail = $_POST['new_email'];
-    $newAvatar = $_FILES['new_avatar'];
-    $newCompte = $_POST['new_compte'];
-    $id = $_POST['id'];
-
-    // Si le pseudo existe déjà
-    if($newPseudo == $result['pseudo_user']) {
-        $errorMessageModif .= "Quelque chose s'est mal passé, merci d'entrer un autre pseudo.<br />";
-    }
-
-    // Si le mail existe déjà
-    if($newEmail == $result['mail_user']) {
-        $errorMessageModif .= "Quelque chose s'est mal passé, merci d'entrer un autre mail pour t'inscrire.<br />";
-        $isEverythingOk = false;
-    }
-
-    if(isset($_FILES['new_avatar']) && $_FILES['new_avatar']['error'] === UPLOAD_ERR_OK) {
-        $newAvatar = $_FILES['new_avatar']['name'];
-        $avatarTmpName = $_FILES['new_avatar']['tmp_name'];
-        $avatarPath = 'uploads/' . $newAvatar; // Spécifiez le chemin où vous souhaitez stocker l'avatar
-
-        // Déplacez le fichier téléchargé vers le dossier d'uploads
-        if(move_uploaded_file($avatarTmpName, $avatarPath)) {
-            // Le fichier a été téléchargé avec succès
-        } else {
-            // Une erreur s'est produite lors du téléchargement du fichier
-            $errorMessage .= "Une erreur s'est produite lors du téléchargement de l'avatar.<br />";
-            $isEverythingOk = false;
-        }
-    }
-
-    // Effectuez la mise à jour des données dans la base de données
-    $requeteUpdate = "UPDATE users SET nom_user = :new_nom, prenom_user = :new_prenom, pseudo_user = :new_pseudo, mail_user = :new_email, avatar_user = :new_avatar, compte_user = :new_compte WHERE id_user = :id";
-    
-    // Préparez la requête
-    $stmtUpdate = $db->prepare($requeteUpdate);
-
-    // Injectez les valeurs
-    $stmtUpdate->execute(array(
-        'new_nom' => $newNom,
-        'new_prenom' => $newPrenom,
-        'new_pseudo' => $newPseudo,
-        'new_email' => $newEmail,
-        'new_avatar' => $newAvatar,
-        'new_compte' => $newCompte,
-        'id' => $id
-    ));
-}
-
-// Fonction de SUPPRESSION de compte
-if (isset($_POST['delete_id'])) {
-    $deleteId = $_POST['delete_id'];
-    
-    // Effectuez la suppression de l'utilisateur de la base de données
-    $requeteDelete = "DELETE FROM users WHERE id_user = :id";
-    
-    // Préparez la requête de suppression
-    $stmtDelete = $db->prepare($requeteDelete);
-
-    // Injectez la valeur de l'ID à supprimer
-    $stmtDelete->execute(array(':id' => $deleteId));
-
-    // Redirigez l'utilisateur vers la page actuelle
-    header('Location: listeutilisateurs.php');
-    exit;
-}
-
-$errorMessage = "";
-$errorMessageModif = "";
-$isEverythingOk = true;
-
-// Formulaire ENREGISTREMENT d'un nouveau membre
-// Si le formulaire a été envoyé
-if(isset($_POST['submitnew'])) {
-    // On récupère les données
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
-    $pseudo = $_POST['pseudo'];
-    $password = $_POST['password'];
-    $avatar = $_POST['avatar'];
-
-    // Si le mail n'est pas un mail valide
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMessage = "L'email n'est pas valide<br />";
-        $isEverythingOk = false;
-    }
-
-    // On ne fait pas l'enregistrement si le mot de passe est < à 6 caractères
-    if(strlen($password) < 6) {
-        $errorMessage .= "Le mot de passe doit faire au moins 6 caractères<br />";
-        $isEverythingOk = false;
-    }
-
-    // Si tout est ok 
-    if($isEverythingOk) {
-        // Si le pseudo est déjà enregistré en base de données
-        // Récupérer les pseudo de la base de données, pour les comparer au mot de passe entré sans prendre en compte la casse
-        $requete = "SELECT pseudo_user as pseudo, mail_user as mail FROM users WHERE mail_user = :mail OR pseudo_user = :pseudo";
-
-        // On prépare la requête
-        $requete = $db->prepare($requete);
-
-        // On injecte les valeurs
-        $requete->execute(array(
-            ':mail' => $email,
-            // ':pseudo' => $pseudo peu importe la casse
-            ':pseudo' => strtolower($pseudo)
-        ));
-
-        $data = $requete->fetch();
+// Si la connexion provient d'un compte_user == admin on reste sur la page, sinon on est redirigé vers la page d'accueil
+if($result['compte_user'] !== 'admin') {
+    header('Location: ../index.php');
+} else {
+    // Fonction de MODIFICATION de compte
+    if (isset($_POST['submitupdate'])) {
+        // Le formulaire de modification a été soumis
+        // Récupérez les données soumises
+        $newNom = $_POST['new_nom'];
+        $newPrenom = $_POST['new_prenom'];
+        $newPseudo = $_POST['new_pseudo'];
+        $newEmail = $_POST['new_email'];
+        $newAvatar = $_FILES['new_avatar'];
+        $newCompte = $_POST['new_compte'];
+        $id = $_POST['id'];
 
         // Si le pseudo existe déjà
-        if($data['pseudo'] == $pseudo) {
-            $errorMessage .= "Quelque chose s'est mal passé, merci d'entrer un autre pseudo pour t'inscrire.<br />";
-            $isEverythingOk = false;
+        if($newPseudo == $result['pseudo_user']) {
+            $errorMessageModif .= "Quelque chose s'est mal passé, merci d'entrer un autre pseudo.<br />";
         }
 
         // Si le mail existe déjà
-        if($data['mail'] == $email) {
-            $errorMessage .= "Quelque chose s'est mal passé, merci d'entrer un autre mail pour t'inscrire.<br />";
+        if($newEmail == $result['mail_user']) {
+            $errorMessageModif .= "Quelque chose s'est mal passé, merci d'entrer un autre mail pour t'inscrire.<br />";
             $isEverythingOk = false;
         }
 
-        // Si on ne récupère pas de données, on peut faire l'inscription
-        if(!$data) {
-            // On hash le mot de passe entré
-            $hash = password_hash($password, PASSWORD_DEFAULT);
+        if(isset($_FILES['new_avatar']) && $_FILES['new_avatar']['error'] === UPLOAD_ERR_OK) {
+            $newAvatar = $_FILES['new_avatar']['name'];
+            $avatarTmpName = $_FILES['new_avatar']['tmp_name'];
+            $avatarPath = 'uploads/' . $newAvatar; // Spécifiez le chemin où vous souhaitez stocker l'avatar
+
+            // Déplacez le fichier téléchargé vers le dossier d'uploads
+            if(move_uploaded_file($avatarTmpName, $avatarPath)) {
+                // Le fichier a été téléchargé avec succès
+            } else {
+                // Une erreur s'est produite lors du téléchargement du fichier
+                $errorMessage .= "Une erreur s'est produite lors du téléchargement de l'avatar.<br />";
+                $isEverythingOk = false;
+            }
+        }
+
+        // Effectuez la mise à jour des données dans la base de données
+        $requeteUpdate = "UPDATE users SET nom_user = :new_nom, prenom_user = :new_prenom, pseudo_user = :new_pseudo, mail_user = :new_email, avatar_user = :new_avatar, compte_user = :new_compte WHERE id_user = :id";
+        
+        // Préparez la requête
+        $stmtUpdate = $db->prepare($requeteUpdate);
+
+        // Injectez les valeurs
+        $stmtUpdate->execute(array(
+            'new_nom' => $newNom,
+            'new_prenom' => $newPrenom,
+            'new_pseudo' => $newPseudo,
+            'new_email' => $newEmail,
+            'new_avatar' => $newAvatar,
+            'new_compte' => $newCompte,
+            'id' => $id
+        ));
+    }
+
+    // Fonction de SUPPRESSION de compte
+    if (isset($_POST['delete_id'])) {
+        $deleteId = $_POST['delete_id'];
+        
+        // Effectuez la suppression de l'utilisateur de la base de données
+        $requeteDelete = "DELETE FROM users WHERE id_user = :id";
+        
+        // Préparez la requête de suppression
+        $stmtDelete = $db->prepare($requeteDelete);
+
+        // Injectez la valeur de l'ID à supprimer
+        $stmtDelete->execute(array(':id' => $deleteId));
+
+        // Redirigez l'utilisateur vers la page actuelle
+        header('Location: listeutilisateurs.php');
+        exit;
+    }
+
+    $errorMessage = "";
+    $errorMessageModif = "";
+    $isEverythingOk = true;
+
+    // Formulaire ENREGISTREMENT d'un nouveau membre
+    // Si le formulaire a été envoyé
+    if(isset($_POST['submitnew'])) {
+        // On récupère les données
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $email = $_POST['email'];
+        $pseudo = $_POST['pseudo'];
+        $password = $_POST['password'];
+        $avatar = $_POST['avatar'];
+
+        // Si le mail n'est pas un mail valide
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errorMessage = "L'email n'est pas valide<br />";
+            $isEverythingOk = false;
+        }
+
+        // On ne fait pas l'enregistrement si le mot de passe est < à 6 caractères
+        if(strlen($password) < 6) {
+            $errorMessage .= "Le mot de passe doit faire au moins 6 caractères<br />";
+            $isEverythingOk = false;
+        }
+
+        // Si tout est ok 
+        if($isEverythingOk) {
+            // Si le pseudo est déjà enregistré en base de données
+            // Récupérer les pseudo de la base de données, pour les comparer au mot de passe entré sans prendre en compte la casse
+            $requete = "SELECT pseudo_user as pseudo, mail_user as mail FROM users WHERE mail_user = :mail OR pseudo_user = :pseudo";
 
             // On prépare la requête
-            $requeteInscription = "INSERT INTO users (nom_user, prenom_user, mail_user, pseudo_user, password_user, avatar_user, compte_user) VALUES (:nom, :prenom, :mail, :pseudo, :pass, :avatar, :compte)";
+            $requete = $db->prepare($requete);
 
-            $compte = "membre";
-
-            $requeteInscription = $db->prepare($requeteInscription);
-
-            $requeteInscription->execute(array(
-                'nom' => $nom,
-                'prenom' => $prenom,
-                'mail' => $email,
-                'pseudo' => $pseudo,
-                'pass' => $hash,
-                'avatar' => $avatar,
-                'compte' => $compte
+            // On injecte les valeurs
+            $requete->execute(array(
+                ':mail' => $email,
+                // ':pseudo' => $pseudo peu importe la casse
+                ':pseudo' => strtolower($pseudo)
             ));
+
+            $data = $requete->fetch();
+
+            // Si le pseudo existe déjà
+            if($data['pseudo'] == $pseudo) {
+                $errorMessage .= "Quelque chose s'est mal passé, merci d'entrer un autre pseudo pour t'inscrire.<br />";
+                $isEverythingOk = false;
+            }
+
+            // Si le mail existe déjà
+            if($data['mail'] == $email) {
+                $errorMessage .= "Quelque chose s'est mal passé, merci d'entrer un autre mail pour t'inscrire.<br />";
+                $isEverythingOk = false;
+            }
+
+            // Si on ne récupère pas de données, on peut faire l'inscription
+            if(!$data) {
+                // On hash le mot de passe entré
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+
+                // On prépare la requête
+                $requeteInscription = "INSERT INTO users (nom_user, prenom_user, mail_user, pseudo_user, password_user, avatar_user, compte_user) VALUES (:nom, :prenom, :mail, :pseudo, :pass, :avatar, :compte)";
+
+                $compte = "membre";
+
+                $requeteInscription = $db->prepare($requeteInscription);
+
+                $requeteInscription->execute(array(
+                    'nom' => $nom,
+                    'prenom' => $prenom,
+                    'mail' => $email,
+                    'pseudo' => $pseudo,
+                    'pass' => $hash,
+                    'avatar' => $avatar,
+                    'compte' => $compte
+                ));
+            }
         }
     }
 }
