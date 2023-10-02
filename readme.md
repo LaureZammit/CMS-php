@@ -41,20 +41,20 @@ Vous allez développer un système d’administration. Vous pouvez voir ce proje
     * [ ] Modification de pages
     * [ ] Suppression de pages
 
-    * [ ] Création d'articles
-        * [ ] Titre
-        * [ ] Image mise en avant
-        * [ ] Contenu de la page
-        * [ ] Date de publication
-        * [ ] Statut de publication
-            * [ ] Publié
-            * [ ] En attente de relecture
-            * [ ] Brouillon
-    * [ ] Modification d'articles
-    * [ ] Suppression d'articles
-    * [ ] Création de catégories d'article
-    * [ ] Modification de catégories d'article
-    * [ ] Suppression de catégories d'article
+    * [x] Création d'articles
+        * [x] Titre
+        * [x] Image mise en avant
+        * [x] Contenu de la page
+        * [x] Date de publication
+        * [x] Statut de publication
+            * [x] Publié
+            * [x] En attente de relecture
+            * [x] Brouillon
+    * [x] Modification d'articles
+    * [x] Suppression d'articles
+    * [x] Création de catégories d'article
+    * [x] Modification de catégories d'article
+    * [x] Suppression de catégories d'article
 
     * [ ] Création de comptes
         * [x] Nom
