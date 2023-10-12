@@ -247,8 +247,15 @@ if($result['compte_user'] !== 'admin') {
                                 <img class="admin-img-profil" src="../uploads/<?=$user['avatar_user']?>" alt="Photo de profile de <?=$user['pseudo_user']?>">
                             </td>
                             <td><?=$user['compte_user']?></td>
-                            <td><button class="modify-button button" href="modifierutilisateur.php?id=<?=$user['id_user']?>">Modifier</button></td>
-                            <td><form method="post"><input type="hidden" name="delete_id" value="<?=$user['id_user']?>"><button type="submit" class="delete-button button">Supprimer</button></form></td>
+                            <td>
+                                <button class="modify-button button" href="modifierutilisateur.php?id=<?=$user['id_user']?>">Modifier</button>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="delete_id" value="<?=$user['id_user']?>">
+                                    <button type="submit" class="delete-button button">Supprimer</button>
+                                </form>
+                            </td>
                         </tr>
 
 
@@ -330,4 +337,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Fonction pour confirmer la suppression
+function confirmDelete(userId) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
+        // L'utilisateur a confirmé la suppression, soumettez le formulaire de suppression
+        document.querySelector("form input[name='delete_id']").value = userId;
+        document.querySelector("form").submit();
+    }
+}
 </script>
