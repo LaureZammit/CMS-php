@@ -5,7 +5,7 @@
 
 
 <header>
-    <a href="../projet/index.php">
+    <a href="../CMS-PHP/index.php">
         <img class="header-logo" src="./uploads/logo-ligne.png" alt="Logo du site">
     </a>
     <nav>
@@ -64,7 +64,7 @@
 
                 } else { // Si connecté : profil et deconnexion
                     echo '<li><a href="./profil.php">Profil</a></li>';
-                    echo '<li><a href="../projet/deconnexion.php">Déconnexion</a></li>';
+                    echo '<li><a href="../CMS-PHP/deconnexion.php">Déconnexion</a></li>';
                 }
             ?>
         </ul>

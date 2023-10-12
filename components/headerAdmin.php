@@ -3,7 +3,7 @@
 ?>
 
 <header class="admin-header">
-    <a href="../projet/index.php">
+    <a href="../CMS-PHP/index.php">
         <img class="admin-logo" src="uploads/logo-ligne.png" alt="Logo du site">
     </a>
     <nav class="admin-links">

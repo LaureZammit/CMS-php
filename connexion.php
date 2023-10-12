@@ -27,7 +27,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
             $requete = "SELECT password_user as pass, id_user as id FROM users WHERE mail_user = :email";
 
             // On prépare la requête
-            $requete = $db->prepare($requete);
+            $requete = $db->prepare($requete); 
 
             // On injecte les valeurs
             $requete->execute(array(

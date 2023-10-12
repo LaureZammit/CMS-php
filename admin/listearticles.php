@@ -129,10 +129,10 @@ if($result['compte_user'] == 'admin' || $result['compte_user'] == 'modérateur')
                         foreach ($resultArticle as $article) {
                             ?>
                             <div class="article">
-                                <a href="detailarticle.php">
+                                <a href="../detailarticle.php">
                                     <h2><?=$article['titre_article']?></h2>
                                     <img src="../uploads/articles/<?=$article['image_article']?>" alt="<?=$article['titre_article']?>" />
-                                    <p><?=$article['contenu_article']?></p>
+                                    <p><?=substr($article['contenu_article'], 0, 500) . "..."?></p>
                                     <p><span class="bolder">Date de publication :</span> <?=$article['date_article']?></p>
                                     <p><span class="bolder">Catégorie : </span><?=$article['categorie']?></p>
                                     <p><span class="bolder">Statut :</span> <?=$article['statut']?></p>
