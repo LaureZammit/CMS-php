@@ -5,7 +5,7 @@
     padding: 20px 10px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
 }
@@ -53,4 +53,10 @@
 .footer-links a:hover,
 .footer-social a:hover {
     color: #007bff; /* Couleur de survol */
+}
+
+footer p {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }

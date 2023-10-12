@@ -129,7 +129,8 @@ if($result['compte_user'] == 'admin' || $result['compte_user'] == 'modérateur')
                         foreach ($resultArticle as $article) {
                             ?>
                             <div class="article">
-                                <a href="../detailarticle.php">
+                                <!-- Balise a avec le lien vers l'article sélectionné en fonction de son id -->
+                                <a href="../detailarticle.php?id_article=<?=$article['id_article']?>">
                                     <h2><?=$article['titre_article']?></h2>
                                     <img src="../uploads/articles/<?=$article['image_article']?>" alt="<?=$article['titre_article']?>" />
                                     <p><?=substr($article['contenu_article'], 0, 500) . "..."?></p>

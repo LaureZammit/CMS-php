@@ -11,7 +11,7 @@
     <nav>
         <ul>
             <li><a href="./index.php">Accueil</a></li>
-            <li><a href="./pages.php">Articles</a></li>
+            <li><a href="./articles.php">Articles</a></li>
             <li><a href="./contact.php">Contact</a></li>
             <?php
                 $compte = isset($_SESSION['compte']) ? $_SESSION['compte'] : null;
@@ -38,7 +38,7 @@
                 <?php } ?>
                 
                 <?php 
-                if ($compte === "modérateur") {  ?>
+                if ($compte === "modérateur" && $compte  !== 'admin') {  ?>
                     <div class="dropdown">
                         <button class="dropbtn admin-links a">Listes</button>
                         <div class="dropdown-content">
@@ -48,24 +48,6 @@
                     </div>
                     <li><a class="nav-link" href="admin/deconnexion.php">Déconnexion</a></li>
                 <?php } 
-
-                //} 
-                else if ($compte  == 'admin') {
-                    echo '<div class="dropdown">';
-                        echo '<button class="dropbtn admin-links a">Listes</button>';
-                        echo '<div class="dropdown-content">';
-                            echo '<li><a href="admin/listepages.php">Liste des pages</a></li>';
-                            echo '<li><a href="admin/listearticles.php">Liste des articles</a></li>';
-                            echo '<li><a href="admin/listeutilisateurs.php">Liste des utilisateurs</a></li>';
-                        echo '</div>';
-                    echo '</div>';
-                    echo '<li><a class="nav-link" href="admin/dashboard.php">Dashboard</a></li>';
-                    echo '<li><a class="nav-link" href="admin/deconnexion.php">Déconnexion</a></li>';
-
-                } else { // Si connecté : profil et deconnexion
-                    echo '<li><a href="./profil.php">Profil</a></li>';
-                    echo '<li><a href="../CMS-PHP/deconnexion.php">Déconnexion</a></li>';
-                }
             ?>
         </ul>
     </nav>

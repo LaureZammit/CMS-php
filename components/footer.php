@@ -5,7 +5,7 @@
 <footer class="site-footer">
         <div class="container">
             <div class="footer-logo">
-                <img src="../uploads/logo.png" alt="Logo">
+                <img src="./uploads/logo.png" alt="Logo">
             </div>
             <div class="footer-links">
                 <ul>
@@ -22,6 +22,8 @@
                 </ul>
             </div>
         </div>
-        <p>&copy;2023 - Laure Zammit - La Presse à Mots</p>
+        <div>
+            <p>&copy;2023 - Laure Zammit - La Presse à Mots</p>
+        </div>
     </footer>
     <script src="https://kit.fontawesome.com/749a2d071e.js" crossorigin="anonymous"></script>
