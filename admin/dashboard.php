@@ -107,10 +107,9 @@ if($result['compte_user'] !== 'admin') {
 
             <div class="dashboard-container">
                 <div class="dashboard-item">
-                    <h3>Derniers Articles</h3>
+                    <h3><a href="listearticles.php">Derniers Articles</a></h3>
                     <ul>
                         <?php
-                        // Requête pour récupérer les 5 derniers articles
                         // Requête pour récupérer les 5 derniers articles
                         $requeteDerniersArticles = "SELECT * FROM articles ORDER BY date_article DESC LIMIT 5";
                         $stmtDerniersArticles = $db->prepare($requeteDerniersArticles);
@@ -140,10 +139,9 @@ if($result['compte_user'] !== 'admin') {
                 </div>
 
                 <div class="dashboard-item">
-                    <h3>Derniers Utilisateurs</h3>
+                    <h3><a href="listeutilisateurs.php">Derniers Utilisateurs</a></h3>
                     <ul>
                         <?php
-                        // Requête pour récupérer les 5 derniers utilisateurs
                         // Requête pour récupérer les 5 derniers utilisateurs
                         $requeteDerniersUtilisateurs = "SELECT * FROM users ORDER BY id_user DESC LIMIT 5";
                         $stmtDerniersUtilisateurs = $db->prepare($requeteDerniersUtilisateurs);

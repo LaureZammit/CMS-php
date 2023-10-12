@@ -4,7 +4,7 @@
 
 .admin-user-main {
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 1000px;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -137,4 +137,8 @@
 
 .admin-img-profil {
     width: 100px;
+}
+
+.inscription-section {
+    margin-top: 50px;
 }

@@ -51,7 +51,7 @@ if($result['compte_user'] !== 'admin') {
         if(isset($_FILES['new_avatar']) && $_FILES['new_avatar']['error'] === UPLOAD_ERR_OK) {
             $newAvatar = $_FILES['new_avatar']['name'];
             $avatarTmpName = $_FILES['new_avatar']['tmp_name'];
-            $avatarPath = 'uploads/' . $newAvatar; // Spécifiez le chemin où vous souhaitez stocker l'avatar
+            $avatarPath = '../uploads/' . $newAvatar; // Spécifiez le chemin où vous souhaitez stocker l'avatar
 
             // Déplacez le fichier téléchargé vers le dossier d'uploads
             if(move_uploaded_file($avatarTmpName, $avatarPath)) {
